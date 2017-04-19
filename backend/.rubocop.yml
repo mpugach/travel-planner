@@ -1,0 +1,43 @@
+AllCops:
+  Include:
+    - '**/Gemfile'
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'db/**/*'
+    - 'db/schema.rb'
+    - 'db/seeds.rb'
+    - 'bin/**/*'
+    - 'bundler_stubs/**/*'
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/ClassLength:
+  Max: 300
+
+Metrics/CyclomaticComplexity:
+  Max: 7
+
+Metrics/ModuleLength:
+  Max: 300
+
+Metrics/ParameterLists:
+  Max: 10
+
+Style/Documentation:
+  Enabled: false
+
+Rails:
+  Enabled: true
+
+Bundler/OrderedGems:
+  Enabled: false
