@@ -1,0 +1,5 @@
+{{#if session.isAuthenticated}}
+  {{#paper-button onClick=(action "invalidateSession")}}Logout{{/paper-button}}
+{{/if}}
+
+{{outlet}}
