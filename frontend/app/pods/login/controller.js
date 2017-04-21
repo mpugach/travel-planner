@@ -11,7 +11,13 @@ export default Controller.extend({
     authenticate() {
       const { email, password } = getProperties(this, 'email', 'password');
 
-      get(this, 'session').authenticate('authenticator:devise', email, password);
+      get(this, 'session')
+        .authenticate('authenticator:devise', email, password)
+        .catch(reason => {
+          if (reason.errors) {
+            reason.errors.forEach(error => this.toast.error(error));
+          }
+        });
     },
   },
 });
