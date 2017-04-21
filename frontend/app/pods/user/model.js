@@ -5,6 +5,11 @@ import EmberCpValidations from 'ember-cp-validations';
 const { validator, buildValidations } = EmberCpValidations;
 
 const Validations = buildValidations({
+  password: [
+    validator('length', {
+      min: 8,
+    })
+  ],
   passwordConfirmation: [
     validator('confirmation', {
       on: 'password',

@@ -12,6 +12,7 @@
           type="password"
           label="Password"
           value=model.password
+          errors=model.validations.attrs.password.messages
           required=true
           onChange=(action (mut model.password))
         }}
