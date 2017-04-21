@@ -1,8 +1,11 @@
 <div class="layout-row layout-align-center">
-  <div class="flex-50">
+  <div class="flex-xs-90 flex-sm-55 flex-md-40 flex-30">
     {{#paper-form onSubmit=(action "authenticate") as |form|}}
+      <div class="layout layout-align-center">
+        <h1>Login</h1>
+      </div>
+
       <div class="layout-column">
-        <p>Login</p>
         {{form.input label="Email" value=email onChange=(action (mut email)) required=true type="email"}}
         {{form.input label="Password" value=password onChange=(action (mut password)) required=true type="password"}}
 
