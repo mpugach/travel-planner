@@ -1,5 +1,17 @@
-{{#if session.isAuthenticated}}
-  {{#paper-button onClick=(action "invalidateSession")}}Logout{{/paper-button}}
-{{/if}}
+{{#paper-toolbar}}
+  {{#paper-toolbar-tools}}
+    <h2>
+      {{link-to "TravelPlanner" "index"}}
+    </h2>
+
+    <span class="flex"></span>
+
+    {{#if session.isAuthenticated}}
+      {{#paper-button iconButton=true onClick=(action "invalidateSession")}}
+        {{paper-icon "exit_to_app"}}
+      {{/paper-button}}
+    {{/if}}
+  {{/paper-toolbar-tools}}
+{{/paper-toolbar}}
 
 {{outlet}}
