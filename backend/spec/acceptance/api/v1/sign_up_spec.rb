@@ -1,11 +1,7 @@
 require 'acceptance_helper'
 
 resource 'Sign Up' do
-  header 'Accept', 'application/json'
-  header 'Content-Type', 'application/json'
-
-  let(:raw_post) { params.to_json }
-  let(:parsed_response) { JSON.parse(response_body, symbolize_names: true) }
+  include_context :api
 
   email = 'test@example.com'
   password = 'password'
