@@ -6,7 +6,7 @@ resource 'Sign Up' do
   email = 'test@example.com'
   password = 'password'
 
-  def expect_wrong_field(field, user_count=0)
+  def expect_wrong_field(field, user_count = 0)
     expect(status).to eq 422
     expect(User.count).to be(user_count)
     expect(parsed_response[:status]).to eq('error')
