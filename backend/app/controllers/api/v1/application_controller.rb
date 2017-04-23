@@ -3,8 +3,10 @@ module Api
     class ApplicationController < ::ApplicationController
       include DeviseTokenAuth::Concerns::SetUserByToken
 
+      before_action :authenticate_api_v1_user!
+
       rescue_from 'Api::NotAuthorizedError' do
-        head :forbidden
+        head :unauthorized
       end
 
       private
