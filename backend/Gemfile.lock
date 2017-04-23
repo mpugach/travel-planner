@@ -24,6 +24,8 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_interaction (3.5.0)
+      activemodel (>= 4, < 6)
     activejob (5.0.2)
       activesupport (= 5.0.2)
       globalid (>= 0.3.6)
@@ -69,6 +71,8 @@ GEM
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.1)
+    jsonapi-serializers (1.0.0)
+      activesupport
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -188,11 +192,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_interaction
   database_cleaner
   devise_token_auth
   factory_girl_rails
   ffaker
   fuubar
+  jsonapi-serializers
   listen (~> 3.0.5)
   pg (~> 0.18)
   pry-rails

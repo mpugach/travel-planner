@@ -6,6 +6,9 @@ gem 'puma', '~> 3.0'
 
 gem 'devise_token_auth'
 
+gem 'active_interaction'
+gem 'jsonapi-serializers'
+
 group :development, :test do
   gem 'rubocop'
   gem 'pry-rails'
