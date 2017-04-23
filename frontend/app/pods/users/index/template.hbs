@@ -8,6 +8,12 @@
       {{#each model as |user|}}
         {{#paper-item as |controls|}}
           <div>{{user.email}}</div>
+
+          <span class="flex"></span>
+
+          {{#controls.button iconButton=true onClick=(action "goToUser" user)}}
+            {{paper-icon "mode_edit"}}
+          {{/controls.button}}
         {{/paper-item}}
       {{/each}}
     {{/paper-list}}
