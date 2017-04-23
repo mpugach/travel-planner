@@ -1,20 +1,22 @@
-<div class="layout-row layout-align-center vert-offset-top-3">
-  <div class="flex-xs-90 flex-sm-55 flex-md-40 flex-30">
-    {{#paper-form onSubmit=(action "authenticate") as |form|}}
-      <div class="layout layout-align-center">
-        <h1>Login</h1>
-      </div>
+<div class="layout-column layout-align-center height-70">
+  <div class="layout-row layout-align-center">
+    <h1>Login</h1>
+  </div>
 
-      <div class="layout-column">
-        {{form.input label="Email" value=email onChange=(action (mut email)) required=true type="email"}}
-        {{form.input label="Password" value=password onChange=(action (mut password)) required=true type="password"}}
+  <div class="layout-row layout-align-center">
+    <div class="flex-xs-90 flex-sm-55 flex-md-40 flex-30">
+      {{#paper-form onSubmit=(action "authenticate") as |form|}}
+        <div class="layout-column">
+          {{form.input label="Email" value=email onChange=(action (mut email)) required=true type="email"}}
+          {{form.input label="Password" value=password onChange=(action (mut password)) required=true type="password"}}
 
-        {{#form.submit-button raised=true primary=true}}Login{{/form.submit-button}}
-      </div>
+          {{#form.submit-button raised=true primary=true}}Login{{/form.submit-button}}
+        </div>
 
-      <div class="layout layout-align-center vert-offset-top-1">
-        {{link-to "Don't have an account? Register instead" "register"}}
-      </div>
-    {{/paper-form}}
+        <div class="layout-row layout-align-center vert-offset-top-1">
+          {{link-to "Don't have an account? Register instead" "register"}}
+        </div>
+      {{/paper-form}}
+    </div>
   </div>
 </div>

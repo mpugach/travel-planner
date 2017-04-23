@@ -1,26 +1,23 @@
 {{#paper-toolbar}}
-  {{#paper-toolbar-tools}}
-    <h2>
-      {{link-to "TravelPlanner" "index"}}
-    </h2>
-
+  {{#paper-toolbar-tools class="layout-row layout-align-space-between-center"}}
+    {{#link-to "index"}}
+      {{paper-icon "home" size=36}}
+    {{/link-to}}
 
     {{#if currentUser.data.canManageUsers}}
-      <span class="flex-5"></span>
-
       {{#link-to "users.index"}}
         {{paper-icon "people" size=36}}
       {{/link-to}}
     {{/if}}
 
-    <span class="flex"></span>
-
     {{#if session.isAuthenticated}}
       {{#paper-button iconButton=true onClick=(action "invalidateSession")}}
-        {{paper-icon "exit_to_app"}}
+        {{paper-icon "exit_to_app" size=28}}
       {{/paper-button}}
     {{/if}}
   {{/paper-toolbar-tools}}
 {{/paper-toolbar}}
 
-{{outlet}}
+<div class="layout-column vert-offset-top-1 vert-offset-bottom-4">
+  {{outlet}}
+</div>

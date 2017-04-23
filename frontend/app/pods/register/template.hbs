@@ -1,37 +1,39 @@
-<div class="layout-row layout-align-center vert-offset-top-3">
-  <div class="flex-xs-90 flex-sm-55 flex-md-40 flex-30">
-    {{#paper-form onSubmit=(action "register") as |form|}}
-      <div class="layout layout-align-center">
-        <h1>Registration</h1>
-      </div>
+<div class="layout-column layout-align-center height-70">
+  <div class="layout-row layout-align-center">
+    <h1>Register</h1>
+  </div>
 
-      <div class="layout-column">
-        {{form.input label="Email" value=model.email onChange=(action (mut model.email)) required=true type="email"}}
+  <div class="layout-row layout-align-center">
+    <div class="flex-xs-90 flex-sm-55 flex-md-40 flex-30">
+      {{#paper-form onSubmit=(action "register") as |form|}}
+        <div class="layout-column">
+          {{form.input label="Email" value=model.email onChange=(action (mut model.email)) required=true type="email"}}
 
-        {{form.input
-          type="password"
-          label="Password"
-          value=model.password
-          errors=model.validations.attrs.password.messages
-          required=true
-          onChange=(action (mut model.password))
-        }}
+          {{form.input
+            type="password"
+            label="Password"
+            value=model.password
+            errors=model.validations.attrs.password.messages
+            required=true
+            onChange=(action (mut model.password))
+          }}
 
-        {{form.input
-          type="password"
-          label="Password confirmation"
-          value=model.passwordConfirmation
-          errors=model.validations.attrs.passwordConfirmation.messages
-          required=true
-          onChange=(action (mut model.passwordConfirmation))
-        }}
+          {{form.input
+            type="password"
+            label="Password confirmation"
+            value=model.passwordConfirmation
+            errors=model.validations.attrs.passwordConfirmation.messages
+            required=true
+            onChange=(action (mut model.passwordConfirmation))
+          }}
 
-        {{#form.submit-button raised=true primary=true}}Register{{/form.submit-button}}
-      </div>
+          {{#form.submit-button raised=true primary=true}}Register{{/form.submit-button}}
+        </div>
 
-      <div class="layout layout-align-center vert-offset-top-1">
-        {{link-to "Have an account? Login instead" "login"}}
-      </div>
-    {{/paper-form}}
+        <div class="layout layout-align-center vert-offset-top-1">
+          {{link-to "Have an account? Login instead" "login"}}
+        </div>
+      {{/paper-form}}
+    </div>
   </div>
 </div>
