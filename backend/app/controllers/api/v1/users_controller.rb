@@ -4,6 +4,10 @@ module Api
       def show
         render_interaction Api::V1::Users::MeInteraction
       end
+
+      def index
+        render_interaction Api::V1::Users::IndexInteraction
+      end
     end
   end
 end

@@ -4,6 +4,15 @@
       {{link-to "TravelPlanner" "index"}}
     </h2>
 
+
+    {{#if currentUser.data.canManageUsers}}
+      <span class="flex-5"></span>
+
+      {{#link-to "users.index"}}
+        {{paper-icon "people" size=36}}
+      {{/link-to}}
+    {{/if}}
+
     <span class="flex"></span>
 
     {{#if session.isAuthenticated}}

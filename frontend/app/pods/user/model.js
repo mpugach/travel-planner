@@ -21,4 +21,5 @@ const Validations = buildValidations({
 
 export default Model.extend(Validations, {
   email: attr('string'),
+  canManageUsers: attr('boolean'),
 });
