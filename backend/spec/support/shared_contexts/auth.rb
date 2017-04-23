@@ -5,9 +5,9 @@ shared_context :auth do
   header 'token-type', :token_type
   header 'access-token', :access_token
 
-  let(:user) { create :user }
+  let(:current_user) { create :user }
 
-  let(:auth_headers) { user.create_new_auth_token }
+  let(:auth_headers) { current_user.create_new_auth_token }
 
   let(:uid) { auth_headers['uid'] }
   let(:expiry) { auth_headers['expiry'] }

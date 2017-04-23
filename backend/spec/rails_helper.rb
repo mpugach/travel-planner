@@ -15,6 +15,7 @@ Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, type: :controller
+  config.include Rails.application.routes.url_helpers, type: :acceptance
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = false

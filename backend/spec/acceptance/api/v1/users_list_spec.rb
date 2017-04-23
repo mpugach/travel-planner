@@ -33,15 +33,15 @@ resource 'Users list' do
     end
 
     context 'authenticated admin' do
-      before { user.admin! }
+      before { current_user.admin! }
 
       example_request 'Admin user' do
         expect_authorized
       end
     end
 
-   context 'authenticated manager' do
-      before { user.manager! }
+    context 'authenticated manager' do
+      before { current_user.manager! }
 
       example_request 'Manager user' do
         expect_authorized
