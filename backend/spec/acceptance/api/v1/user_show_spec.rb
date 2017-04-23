@@ -13,7 +13,7 @@ resource 'User show' do
     context 'not authenticated' do
       let(:auth_headers) { {} }
 
-      example_request 'Current user not authenticated' do
+      example_request 'Current user is not authenticated' do
         expect_unauthorized
       end
     end

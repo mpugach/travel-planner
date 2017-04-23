@@ -6,7 +6,7 @@ module Api
       before_action :authenticate_api_v1_user!
 
       rescue_from 'Api::NotAuthorizedError' do
-        head :unauthorized
+        render json: { errors: ['Authorized users only.'] }, status: :unauthorized
       end
 
       private
