@@ -58,15 +58,14 @@ export default DeviseAuthenticator.extend({
         headers
       };
 
-      this.makeRequest({}, requestOptions).then((response) => {
-        response.json().then((json) => {
-          if (response.ok) {
-            run(null, resolve, json);
-          } else {
-            run(null, reject, json);
-          }
+      this
+        .makeRequest({}, requestOptions)
+        .then(response => {
+          response.json().then(json => run(null, resolve, json));
+        })
+        .catch(error => {
+          run(null, reject, error)
         });
-      }).catch((error) => run(null, reject, error));
     });
   },
 

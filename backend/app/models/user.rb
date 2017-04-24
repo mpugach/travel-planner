@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   enum role: %i[regular manager admin]
 
+  validates :email, uniqueness: true
+
   def can_manage_users?
     manager? || admin?
   end

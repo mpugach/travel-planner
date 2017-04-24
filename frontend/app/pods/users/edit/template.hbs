@@ -1,1 +1,22 @@
-{{outlet}}
+<div class="layout-row layout-align-center vert-offset-top-3">
+  <div class="flex-xs-90 flex-sm-55 flex-md-40 flex-30">
+    <div class="layout layout-align-center">
+      <h1>Edit user</h1>
+    </div>
+
+    {{#paper-form onSubmit=(action "save") as |form|}}
+      <div class="layout-column">
+        {{form.input
+          type="email"
+          label="Email"
+          value=model.email
+          errors=model.emailErrors
+          onChange=(action (mut model.email))
+          isTouched=model.emailErrors.length
+        }}
+
+        {{#form.submit-button raised=true primary=true}}Save{{/form.submit-button}}
+      </div>
+    {{/paper-form}}
+  </div>
+</div>

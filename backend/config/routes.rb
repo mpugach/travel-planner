@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       mount_devise_token_auth_for 'User', at: 'auth'
 
-      resources :users, only: %i[show index]
+      resources :users, only: %i[show index update]
     end
   end
 end

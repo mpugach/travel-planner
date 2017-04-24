@@ -10,6 +10,10 @@ module Api
       def index
         render_interaction Api::V1::Users::IndexInteraction
       end
+
+      def update
+        render_interaction Api::V1::Users::UpdateInteraction
+      end
     end
   end
 end

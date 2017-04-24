@@ -1,8 +1,12 @@
 import attr from 'ember-data/attr';
+import Ember from 'ember';
 import Model from 'ember-data/model';
 import EmberCpValidations from 'ember-cp-validations';
 
-const { validator, buildValidations } = EmberCpValidations;
+const {
+  validator,
+  buildValidations,
+} = EmberCpValidations;
 
 const Validations = buildValidations({
   password: [
@@ -19,7 +23,15 @@ const Validations = buildValidations({
   ]
 });
 
+const {
+  computed: {
+    mapBy,
+  },
+} = Ember;
+
 export default Model.extend(Validations, {
   email: attr('string'),
   canManageUsers: attr('boolean'),
+
+  emailErrors: mapBy('errors.email', 'message'),
 });
