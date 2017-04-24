@@ -4,9 +4,14 @@ const {
   get,
   Controller,
   getProperties,
+  inject: {
+    service,
+  },
 } = Ember;
 
 export default Controller.extend({
+  session: service(),
+
   actions: {
     authenticate() {
       const { email, password } = getProperties(this, 'email', 'password');

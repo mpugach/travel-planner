@@ -11,6 +11,7 @@ export default Service.extend({
   data: {},
 
   store: service(),
+  session: service(),
 
   load() {
     if (get(this, 'session.isAuthenticated')) {
