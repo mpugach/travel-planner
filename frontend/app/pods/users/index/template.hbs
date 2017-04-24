@@ -14,6 +14,10 @@
           {{#controls.button iconButton=true onClick=(action "goToUser" user)}}
             {{paper-icon "mode_edit"}}
           {{/controls.button}}
+
+          {{#controls.button iconButton=true onClick=(action "destroyUser" user)}}
+            {{paper-icon "delete_forever"}}
+          {{/controls.button}}
         {{/paper-item}}
       {{/each}}
     {{/paper-list}}

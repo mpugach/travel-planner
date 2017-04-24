@@ -9,5 +9,12 @@ export default Controller.extend({
     goToUser(user) {
       this.transitionToRoute('users.edit', user);
     },
+
+    destroyUser(user) {
+      user
+        .destroyRecord()
+        .then(() => this.toast.success('User is deleted!'))
+        .catch(() => this.toast.error('Something went wrong...'));
+    },
   },
 });

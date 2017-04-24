@@ -14,6 +14,10 @@ module Api
       def update
         render_interaction Api::V1::Users::UpdateInteraction
       end
+
+      def destroy
+        render_interaction Api::V1::Users::DestroyInteraction
+      end
     end
   end
 end
