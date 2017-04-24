@@ -3,7 +3,7 @@ import UnauthenticatedRouteMixin from 'ember-simple-auth/mixins/unauthenticated-
 
 const {
   get,
-  Route
+  Route,
 } = Ember;
 
 export default Route.extend(UnauthenticatedRouteMixin, {
