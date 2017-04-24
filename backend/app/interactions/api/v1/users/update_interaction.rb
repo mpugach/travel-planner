@@ -2,6 +2,8 @@ module Api
   module V1
     module Users
       class UpdateInteraction < Api::V1::ApplicationInteraction
+        include Api::V1::Users::Concerns::Crudable
+
         ROLE = 'role'.freeze
         ATTRIBUTES = 'attributes'.freeze
 
@@ -22,18 +24,6 @@ module Api
         end
 
         private
-
-        def user
-          @_user ||= User.find(id)
-        end
-
-        def authorized?
-          id == current_user.id || current_user.can_manage_users? && has_sufficient_level?
-        end
-
-        def has_sufficient_level?
-          User.roles[current_user.role] >= User.roles[user.role]
-        end
 
         def permitted_attributes
           attributes = data[ATTRIBUTES]
