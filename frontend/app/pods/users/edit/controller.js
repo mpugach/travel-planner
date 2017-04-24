@@ -3,9 +3,14 @@ import Ember from 'ember';
 const {
   get,
   Controller,
+  inject: {
+    service,
+  },
 } = Ember;
 
 export default Controller.extend({
+  currentUser: service(),
+
   actions: {
     save() {
       const model = get(this, 'model');

@@ -30,8 +30,10 @@ const {
 } = Ember;
 
 export default Model.extend(Validations, {
+  role: attr('string'),
   email: attr('string'),
   canManageUsers: attr('boolean'),
+  permittedRolesToSet: attr(),
 
   emailErrors: mapBy('errors.email', 'message'),
 });

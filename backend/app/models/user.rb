@@ -10,4 +10,14 @@ class User < ActiveRecord::Base
   def can_manage_users?
     manager? || admin?
   end
+
+  def permitted_roles_to_set
+    return [] if regular?
+
+    all_roles = self.class.roles.keys
+
+    return all_roles - %w[admin] if manager?
+
+    all_roles
+  end
 end

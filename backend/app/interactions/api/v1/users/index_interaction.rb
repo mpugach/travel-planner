@@ -3,10 +3,14 @@ module Api
     module Users
       class IndexInteraction < Api::V1::ApplicationInteraction
         def execute
-          serialize(User.order(:email), is_collection: true)
+          serialize(users, is_collection: true)
         end
 
         private
+
+        def users
+          User.where('role <= ?', User.roles[current_user.role]).order(:email)
+        end
 
         def authorized?
           current_user.can_manage_users?

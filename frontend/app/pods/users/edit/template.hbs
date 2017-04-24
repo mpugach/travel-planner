@@ -15,6 +15,16 @@
           isTouched=model.emailErrors.length
         }}
 
+        {{#form.select
+          label="Role"
+          options=currentUser.data.permittedRolesToSet
+          onChange=(action (mut model.role))
+          selected=model.role
+          as |role|
+        }}
+          {{role}}
+        {{/form.select}}
+
         {{#form.submit-button raised=true primary=true}}Save{{/form.submit-button}}
       </div>
     {{/paper-form}}
