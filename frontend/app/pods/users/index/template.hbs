@@ -23,3 +23,42 @@
     {{/paper-list}}
   </div>
 </div>
+
+{{#if showDeleteConfirmation}}
+  {{#paper-dialog
+    class="flex-50"
+    parent="body"
+    onClose=(action "closeDeleteConfirmation" "cancel")
+    clickOutsideToClose=true
+  }}
+    <form>
+      {{#paper-toolbar warn=true}}
+        {{#paper-toolbar-tools}}
+          <h2>Delete confirmation</h2>
+
+          <span class="flex"></span>
+
+          {{#paper-button
+            iconButton=true
+            onClick=(action "closeDeleteConfirmation" "cancel")
+          }}
+            {{paper-icon icon="close"}}
+          {{/paper-button}}
+        {{/paper-toolbar-tools}}
+      {{/paper-toolbar}}
+
+      {{#paper-dialog-content}}
+        <p>The action is irreversible.</p>
+        <p>Are you sure you want to delete the user?</p>
+      {{/paper-dialog-content}}
+
+      {{#paper-dialog-actions class="layout-row"}}
+
+        <span class="flex"></span>
+
+        {{#paper-button onClick=(action "closeDeleteConfirmation" "cancel")}}No{{/paper-button}}
+        {{#paper-button onClick=(action "closeDeleteConfirmation" "yes")}}Yes{{/paper-button}}
+      {{/paper-dialog-actions}}
+    </form>
+  {{/paper-dialog}}
+{{/if}}
