@@ -4,8 +4,6 @@ module Api
       class ShowInteraction < Api::V1::ApplicationInteraction
         include Api::V1::Users::Concerns::Crudable
 
-        integer :id
-
         def execute
           serialize(user)
         end

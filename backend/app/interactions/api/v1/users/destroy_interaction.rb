@@ -4,8 +4,6 @@ module Api
       class DestroyInteraction < Api::V1::ApplicationInteraction
         include Api::V1::Users::Concerns::Crudable
 
-        integer :id
-
         def execute
           user.destroy
 

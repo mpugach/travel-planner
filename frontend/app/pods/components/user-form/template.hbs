@@ -1,0 +1,24 @@
+{{#paper-form onSubmit=onSubmit as |form|}}
+  <div class="layout-column">
+    {{form.input
+      type="email"
+      label="Email"
+      value=user.email
+      errors=user.emailErrors
+      onChange=(action (mut user.email))
+      isTouched=user.emailErrors.length
+    }}
+
+    {{#form.select
+      label="Role"
+      options=currentUser.data.permittedRolesToSet
+      onChange=(action (mut user.role))
+      selected=user.role
+      as |role|
+    }}
+      {{role}}
+    {{/form.select}}
+
+    {{#form.submit-button raised=true primary=true}}{{submitLabel}}{{/form.submit-button}}
+  </div>
+{{/paper-form}}

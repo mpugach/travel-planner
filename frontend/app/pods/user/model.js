@@ -24,9 +24,8 @@ const Validations = buildValidations({
 });
 
 const {
-  computed: {
-    mapBy,
-  },
+  get,
+  computed,
 } = Ember;
 
 export default Model.extend(Validations, {
@@ -35,5 +34,9 @@ export default Model.extend(Validations, {
   canManageUsers: attr('boolean'),
   permittedRolesToSet: attr(),
 
-  emailErrors: mapBy('errors.email', 'message'),
+  emailErrors: computed('errors.email', function() {
+    const errors = get(this, 'errors.email');
+
+    return errors ? errors.mapBy('message') : [];
+  }),
 });

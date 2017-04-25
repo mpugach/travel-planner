@@ -3,6 +3,12 @@ module Api
     module Users
       module Concerns
         module Crudable
+          extend ActiveSupport::Concern
+
+          included do
+            integer :id
+          end
+
           private
 
           def user

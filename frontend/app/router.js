@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('register');
   this.route('users', function() {
     this.route('edit', { path: '/:id/edit' });
+    this.route('new');
   });
 });
 
