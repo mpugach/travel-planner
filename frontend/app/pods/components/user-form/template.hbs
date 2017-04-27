@@ -5,6 +5,7 @@
       label="Email"
       value=user.email
       errors=user.emailErrors
+      required=true
       onChange=(action (mut user.email))
       isTouched=user.emailErrors.length
     }}
