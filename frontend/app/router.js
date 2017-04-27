@@ -13,6 +13,10 @@ Router.map(function() {
     this.route('edit', { path: '/:id/edit' });
     this.route('new');
   });
+
+  this.route('trips', function() {
+    this.route('new');
+  });
 });
 
 export default Router;

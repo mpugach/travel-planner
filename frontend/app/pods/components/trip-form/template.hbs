@@ -1,0 +1,12 @@
+{{#paper-form onSubmit=onSubmit as |form|}}
+  <div class="layout-column">
+    {{form.input
+      label="Destination"
+      value=trip.destination
+      required=true
+      onChange=(action (mut trip.destination))
+    }}
+
+    {{#form.submit-button raised=true primary=true}}{{submitLabel}}{{/form.submit-button}}
+  </div>
+{{/paper-form}}
