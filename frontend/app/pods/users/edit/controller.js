@@ -1,9 +1,11 @@
 import Ember from 'ember';
-import UserEditable from '../../../mixins/user-editable';
+import ModelEditable from '../../../mixins/model-editable';
 
 const {
   Controller,
 } = Ember;
 
-export default Controller.extend(UserEditable, {
+export default Controller.extend(ModelEditable, {
+  successMessage: 'The user is saved!',
+  routeAfterSave: 'users.index',
 });

@@ -3,18 +3,23 @@ import Ember from 'ember';
 const {
   get,
   Mixin,
+  getProperties,
 } = Ember;
 
 export default Mixin.create({
   actions: {
-    saveUser() {
-      const model = get(this, 'model');
+    saveModel() {
+      const {
+        model,
+        routeAfterSave,
+        successMessage,
+      } = getProperties(this, 'model', 'successMessage', 'routeAfterSave');
 
       if (get(model, 'hasDirtyAttributes')) {
         model
           .save()
-          .then(() => this.toast.success('The user is saved!'))
-          .then(() => this.transitionToRoute('users.index'))
+          .then(() => this.toast.success(successMessage))
+          .then(() => this.transitionToRoute(routeAfterSave))
           .catch(() => {
             if (get(model, 'errors.length')) {
               get(model, 'errors.messages').forEach(error => this.toast.error(error));
