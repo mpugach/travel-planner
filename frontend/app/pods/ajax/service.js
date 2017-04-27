@@ -9,15 +9,10 @@ const {
   computed: {
     alias,
   },
-  inject: {
-    service,
-  },
 } = Ember;
 
 export default AjaxService.extend(DataAdapterMixin, {
   namespace: '/api/v1',
-
-  session: service(),
 
   auth: alias('session.data.authenticated'),
 
