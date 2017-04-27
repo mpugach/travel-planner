@@ -16,6 +16,7 @@ Router.map(function() {
 
   this.route('trips', function() {
     this.route('new');
+    this.route('edit', { path: '/:id/edit' });
   });
 });
 
