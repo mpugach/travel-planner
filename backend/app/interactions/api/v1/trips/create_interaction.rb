@@ -10,6 +10,7 @@ module Api
             date :end_date, default: nil
             date :start_date, default: nil
 
+            string :comment, default: ''
             string :destination
           end
         end

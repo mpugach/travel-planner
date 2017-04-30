@@ -19,6 +19,14 @@
       onChange=(action (mut trip.endDate))
     }}
 
+    {{simditor-editor
+      name="comment"
+      value=trip
+      editor=(mut editor)
+      update=(action (mut trip.comment))
+      placeholder="Trip comment"
+    }}
+
     {{#form.submit-button raised=true primary=true}}{{submitLabel}}{{/form.submit-button}}
   </div>
 {{/paper-form}}

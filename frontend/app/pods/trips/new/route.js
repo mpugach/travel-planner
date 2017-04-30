@@ -9,6 +9,6 @@ export default Route.extend({
   model() {
     const today = new Date;
 
-    return get(this, 'store').createRecord('trip', { endDate: today, startDate: today });
+    return get(this, 'store').createRecord('trip', { endDate: today, startDate: today, comment: '' });
   },
 });
