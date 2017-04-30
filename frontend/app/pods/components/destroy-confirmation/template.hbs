@@ -1,0 +1,36 @@
+{{#if visible}}
+  {{#paper-dialog
+    class="flex-50"
+    parent="body"
+    onClose=onCancel
+    clickOutsideToClose=true
+  }}
+    <form>
+      {{#paper-toolbar warn=true}}
+        {{#paper-toolbar-tools}}
+          <h2>Delete confirmation</h2>
+
+          <span class="flex"></span>
+
+          {{#paper-button
+            iconButton=true
+            onClick=onCancel
+          }}
+            {{paper-icon icon="close"}}
+          {{/paper-button}}
+        {{/paper-toolbar-tools}}
+      {{/paper-toolbar}}
+
+      {{#paper-dialog-content}}
+        {{yield}}
+      {{/paper-dialog-content}}
+
+      {{#paper-dialog-actions class="layout-row"}}
+        <span class="flex"></span>
+
+        {{#paper-button onClick=onCancel}}No{{/paper-button}}
+        {{#paper-button onClick=onConfirm}}Yes{{/paper-button}}
+      {{/paper-dialog-actions}}
+    </form>
+  {{/paper-dialog}}
+{{/if}}

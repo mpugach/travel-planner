@@ -25,7 +25,7 @@
             {{paper-icon "mode_edit"}}
           {{/controls.button}}
 
-          {{#controls.button iconButton=true onClick=(action "destroyUser" user)}}
+          {{#controls.button iconButton=true onClick=(action "destroyObject" user)}}
             {{paper-icon "delete_forever"}}
           {{/controls.button}}
         {{/paper-item}}
@@ -34,41 +34,11 @@
   </div>
 </div>
 
-{{#if showDeleteConfirmation}}
-  {{#paper-dialog
-    class="flex-50"
-    parent="body"
-    onClose=(action "closeDeleteConfirmation" "cancel")
-    clickOutsideToClose=true
-  }}
-    <form>
-      {{#paper-toolbar warn=true}}
-        {{#paper-toolbar-tools}}
-          <h2>Delete confirmation</h2>
-
-          <span class="flex"></span>
-
-          {{#paper-button
-            iconButton=true
-            onClick=(action "closeDeleteConfirmation" "cancel")
-          }}
-            {{paper-icon icon="close"}}
-          {{/paper-button}}
-        {{/paper-toolbar-tools}}
-      {{/paper-toolbar}}
-
-      {{#paper-dialog-content}}
-        <p>The action is irreversible.</p>
-        <p>Are you sure you want to delete the user?</p>
-      {{/paper-dialog-content}}
-
-      {{#paper-dialog-actions class="layout-row"}}
-
-        <span class="flex"></span>
-
-        {{#paper-button onClick=(action "closeDeleteConfirmation" "cancel")}}No{{/paper-button}}
-        {{#paper-button onClick=(action "closeDeleteConfirmation" "yes")}}Yes{{/paper-button}}
-      {{/paper-dialog-actions}}
-    </form>
-  {{/paper-dialog}}
-{{/if}}
+{{#destroy-confirmation
+  visible=showDeleteConfirmation
+  onCancel=(action "closeDeleteConfirmation" "cancel")
+  onConfirm=(action "closeDeleteConfirmation" "yes")
+}}
+  <p>The action is irreversible.</p>
+  <p>Are you sure you want to delete the user with email <b>{{objectToDelete.email}}</b> ?</p>
+{{/destroy-confirmation}}
