@@ -36,9 +36,22 @@
             {{paper-icon "mode_edit"}}
           {{/controls.button}}
 
+          {{#controls.button iconButton=true onClick=(action "destroyObject" trip)}}
+            {{paper-icon "delete_forever"}}
+          {{/controls.button}}
+
           {{paper-divider}}
         {{/paper-item}}
       {{/each}}
     {{/paper-list}}
   </div>
 </div>
+
+{{#destroy-confirmation
+  visible=showDeleteConfirmation
+  onCancel=(action "closeDeleteConfirmation" "cancel")
+  onConfirm=(action "closeDeleteConfirmation" "yes")
+}}
+  <p>The action is irreversible.</p>
+  <p>Are you sure you want to delete the trip to <b>{{objectToDelete.destination}}</b> ?</p>
+{{/destroy-confirmation}}

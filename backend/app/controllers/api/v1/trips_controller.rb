@@ -16,6 +16,10 @@ module Api
       def update
         render_interaction Api::V1::Trips::UpdateInteraction
       end
+
+      def destroy
+        render_interaction Api::V1::Trips::DestroyInteraction
+      end
     end
   end
 end
