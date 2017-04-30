@@ -7,6 +7,8 @@ const {
 
 export default Route.extend({
   model() {
-    return get(this, 'store').createRecord('trip');
+    const today = new Date;
+
+    return get(this, 'store').createRecord('trip', { endDate: today, startDate: today });
   },
 });

@@ -7,6 +7,9 @@ module Api
 
         hash :data do
           hash :attributes do
+            date :end_date, default: nil
+            date :start_date, default: nil
+
             string :destination
           end
         end

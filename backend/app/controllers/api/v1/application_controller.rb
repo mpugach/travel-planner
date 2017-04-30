@@ -16,9 +16,17 @@ module Api
         success: ->(int) { render json: int.result },
         failure: ->(int) { render json: int.serialized_errors, location: false, status: :unprocessable_entity }
       )
-        interaction = klass.run(params.merge(current_user: current_api_v1_user))
+        interaction = klass.run(interaction_params)
 
         (interaction.valid? ? success : failure)[interaction]
+      end
+
+      def interaction_params
+        params
+          .permit!
+          .to_h
+          .deep_transform_keys(&:underscore)
+          .merge(current_user: current_api_v1_user)
       end
     end
   end

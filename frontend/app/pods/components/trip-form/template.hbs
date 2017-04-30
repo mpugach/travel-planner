@@ -7,6 +7,18 @@
       onChange=(action (mut trip.destination))
     }}
 
+    {{paper-pikaday
+      label="Start date"
+      value=trip.startDate
+      onChange=(action (mut trip.startDate))
+    }}
+
+    {{paper-pikaday
+      label="End date"
+      value=trip.endDate
+      onChange=(action (mut trip.endDate))
+    }}
+
     {{#form.submit-button raised=true primary=true}}{{submitLabel}}{{/form.submit-button}}
   </div>
 {{/paper-form}}
