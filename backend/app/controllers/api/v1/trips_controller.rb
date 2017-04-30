@@ -5,6 +5,10 @@ module Api
         render_interaction Api::V1::Trips::ShowInteraction
       end
 
+      def index
+        render_interaction Api::V1::Trips::IndexInteraction
+      end
+
       def create
         render_interaction Api::V1::Trips::CreateInteraction
       end

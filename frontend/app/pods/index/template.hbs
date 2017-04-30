@@ -1,1 +1,44 @@
-{{outlet}}
+<div class="layout-row layout-align-center">
+  <h1>Trips</h1>
+</div>
+
+<div class="layout-row layout-align-center">
+  <div class="flex-xs-95 flex-sm-85 flex-md-80 flex-70">
+    {{#paper-list}}
+      {{#paper-item}}
+        <span class="flex"></span>
+
+        {{link-to "Create trip" "trips.new"}}
+      {{/paper-item}}
+
+      {{#each model as |trip|}}
+        {{#paper-item as |controls|}}
+          <div>
+            <h2>
+              {{trip.destination}}
+            </h2>
+
+            <h5>
+              From
+              {{format-date trip.startDate format="YYYY-MM-DD"}}
+              to
+              {{format-date trip.endDate format="YYYY-MM-DD"}}
+            </h5>
+
+            <section>
+              {{{trip.comment}}}
+            </section>
+          </div>
+
+          <span class="flex"></span>
+
+          {{#controls.button iconButton=true onClick=(action "goToTrip" trip)}}
+            {{paper-icon "mode_edit"}}
+          {{/controls.button}}
+
+          {{paper-divider}}
+        {{/paper-item}}
+      {{/each}}
+    {{/paper-list}}
+  </div>
+</div>
