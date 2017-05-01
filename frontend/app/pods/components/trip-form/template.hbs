@@ -10,12 +10,14 @@
     {{paper-pikaday
       label="Start date"
       value=trip.startDate
+      required=true
       onChange=(action (mut trip.startDate))
     }}
 
     {{paper-pikaday
       label="End date"
       value=trip.endDate
+      required=true
       onChange=(action (mut trip.endDate))
     }}
 
