@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   validates :email, uniqueness: true
 
+  has_many :trips, dependent: :destroy
+
   def can_manage_users?
     manager? || admin?
   end

@@ -11,7 +11,22 @@
 
           {{#form.submit-button raised=true primary=true}}Update{{/form.submit-button}}
         </div>
+
+        <div class="layout-column vert-offset-top-1">
+          {{#paper-button raised=true warn=true onClick=(action "destroyObject" model)}}
+            Delete account
+          {{/paper-button}}
+        </div>
       {{/paper-form}}
     </div>
   </div>
 </div>
+
+{{#destroy-confirmation
+  visible=showDeleteConfirmation
+  onCancel=(action "closeDeleteConfirmation" "cancel")
+  onConfirm=(action "closeDeleteConfirmation" "yes")
+}}
+  <p>The action is irreversible.</p>
+  <p>Are you sure you want to delete your account?</p>
+{{/destroy-confirmation}}
