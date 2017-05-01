@@ -56,14 +56,14 @@ export default Component.extend(DestroyConfirmable, {
     const filter = getProperties(this, ...keys);
 
     get(this, 'store')
-      .query('trip', this.decamelizeKeys(filter, keys))
+      .query('trip', this.decamelizeKeysAndCompact(filter, keys))
       .then(trips => set(this, 'trips', trips));
   },
 
-  decamelizeKeys(obj, keys) {
+  decamelizeKeysAndCompact(obj, keys) {
     let newObj = {};
 
-    keys.forEach(key => newObj[key.decamelize()] = obj[key]);
+    keys.forEach(key => { if (obj[key]) newObj[key.decamelize()] = obj[key] });
 
     return newObj;
   },
