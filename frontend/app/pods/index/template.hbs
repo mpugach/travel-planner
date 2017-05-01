@@ -59,9 +59,9 @@
 
           <span class="flex"></span>
 
-          {{#controls.button iconButton=true onClick=(action "goToTrip" trip)}}
+          {{#link-to "trips.edit" trip class="md-default-theme md-button md-icon-button"}}
             {{paper-icon "mode_edit"}}
-          {{/controls.button}}
+          {{/link-to}}
 
           {{#controls.button iconButton=true onClick=(action "destroyObject" trip)}}
             {{paper-icon "delete_forever"}}

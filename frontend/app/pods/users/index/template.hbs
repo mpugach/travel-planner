@@ -21,9 +21,9 @@
 
           <span class="flex"></span>
 
-          {{#controls.button iconButton=true onClick=(action "goToUser" user)}}
+          {{#link-to "users.edit" user class="md-default-theme md-button md-icon-button"}}
             {{paper-icon "mode_edit"}}
-          {{/controls.button}}
+          {{/link-to}}
 
           {{#controls.button iconButton=true onClick=(action "destroyObject" user)}}
             {{paper-icon "delete_forever"}}

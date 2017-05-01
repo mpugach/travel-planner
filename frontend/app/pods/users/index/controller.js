@@ -6,9 +6,4 @@ const {
 } = Ember;
 
 export default Controller.extend(DestroyConfirmable, {
-  actions: {
-    goToUser(user) {
-      this.transitionToRoute('users.edit', user);
-    },
-  },
 });

@@ -42,10 +42,4 @@ export default Controller.extend(DestroyConfirmable, {
 
     return newObj;
   },
-
-  actions: {
-    goToTrip(trip) {
-      this.transitionToRoute('trips.edit', trip);
-    },
-  },
 });
