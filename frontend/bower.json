@@ -2,6 +2,7 @@
   "name": "mpugach-frontend",
   "dependencies": {
     "toastr": "^2.1.3",
-    "simditor": "^2.3.6"
+    "simditor": "^2.3.6",
+    "pdfmake": "^0.1.28"
   }
 }

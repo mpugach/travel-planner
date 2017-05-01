@@ -34,6 +34,15 @@
         {{#link-to "trips.new" (query-params userId=userId) class="md-button md-raised md-icon-button"}}
           {{paper-icon "add_location"}}
         {{/link-to}}
+
+        {{#paper-button
+          raised=true
+          onClick=(action "exportPdf")
+          disabled=noTrips
+          iconButton=true
+        }}
+          {{paper-icon "picture_as_pdf"}}
+        {{/paper-button}}
       {{/paper-item}}
 
       {{#each trips as |trip|}}

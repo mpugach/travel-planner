@@ -1,5 +1,8 @@
 import Ember from 'ember';
+import pdfMake from 'ember-pdfmake';
 import DestroyConfirmable from '../../../mixins/destroy-confirmable';
+
+import { formatDate } from '../../../helpers/format-date';
 
 const {
   get,
@@ -25,6 +28,21 @@ export default Component.extend(DestroyConfirmable, {
   userId: alias('user.id'),
   noTrips: not('trips.length'),
 
+  styles: {
+    dates: {
+      bold: true,
+      fontSize: 12,
+    },
+    comment: {
+      fontSize: 14,
+      margin: [0, 5, 0, 10],
+    },
+    destination: {
+      bold: true,
+      fontSize: 16,
+    },
+  },
+
   termChanged: observer('tripsTerm', function() {
     debounce(this, this.queryTrips, 300);
   }),
@@ -48,5 +66,42 @@ export default Component.extend(DestroyConfirmable, {
     keys.forEach(key => newObj[key.decamelize()] = obj[key]);
 
     return newObj;
+  },
+
+  actions: {
+    exportPdf() {
+      let content = [];
+      const format = 'YYYY-MM-DD';
+      const trimmer = /\s+/g;
+      const sanitizer = /(<([^>]+)>)/ig;
+
+      const { trips, styles } = getProperties(this, 'trips', 'styles');
+
+      trips.forEach(trip => {
+        const {
+          comment,
+          endDate,
+          startDate,
+          destination,
+        } = getProperties(trip, 'comment', 'endDate', 'startDate', 'destination');
+
+        content.pushObjects([
+          {
+            text: destination,
+            style: 'destination',
+          },
+          {
+            text: `From ${formatDate([startDate], { format })} to ${formatDate([endDate], { format })}`,
+            style: 'dates',
+          },
+          {
+            text: comment && comment.replace(sanitizer, ' ').replace(trimmer, ' ') || '',
+            style: 'comment',
+          }
+        ]);
+      });
+
+      pdfMake.createPdf({ content, styles }).open();
+    },
   },
 });

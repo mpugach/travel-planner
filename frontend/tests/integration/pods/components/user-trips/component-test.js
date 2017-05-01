@@ -10,7 +10,7 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  const content = 'MindateFiltertripsMaxdateCreatetripNotripsfound...';
+  const content = 'MindateFiltertripsMaxdateadd_locationpicture_as_pdfNotripsfound...';
 
   this.render(hbs`{{user-trips}}`);
 
