@@ -11,10 +11,9 @@ export default Mixin.create({
     saveModel() {
       const {
         model,
-        afterSave,
         routeAfterSave,
         successMessage,
-      } = getProperties(this, 'model', 'afterSave', 'successMessage', 'routeAfterSave');
+      } = getProperties(this, 'model', 'successMessage', 'routeAfterSave');
 
       if (get(model, 'hasDirtyAttributes')) {
         model
