@@ -17,9 +17,9 @@ module Api
 
         def trips
           collection = Trip.order(:start_date, :end_date)
-          collection = collection.fts(trips_term) unless trips_term.blank?
-          collection = collection.where('"end_date" <= ?', max_end_date) unless max_end_date.blank?
-          collection = collection.where('"start_date" >= ?', min_start_date) unless min_start_date.blank?
+          collection = collection.fts(trips_term) if trips_term.present?
+          collection = collection.where('"end_date" <= ?', max_end_date) if max_end_date.present?
+          collection = collection.where('"start_date" >= ?', min_start_date) if min_start_date.present?
 
           collection.where(user_id: current_user.admin? && user_id || current_user.id)
         end
