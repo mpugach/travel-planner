@@ -2,9 +2,6 @@ module Api
   module V1
     module Trips
       class CreateInteraction < Api::V1::ApplicationInteraction
-        USER_ID = 'user_id'.freeze
-        ATTRIBUTES = 'attributes'.freeze
-
         hash :data do
           hash :attributes do
             date :end_date, default: nil
@@ -34,9 +31,9 @@ module Api
         end
 
         def permitted_attributes
-          attributes = data[ATTRIBUTES]
+          attributes = data[:attributes]
 
-          attributes[USER_ID] = current_user.admin? && data[ATTRIBUTES][USER_ID] || current_user.id
+          attributes[:user_id] = current_user.admin? && data[:attributes][:user_id] || current_user.id
 
           attributes.compact
         end

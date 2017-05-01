@@ -2,9 +2,6 @@ module Api
   module V1
     module Users
       class CreateInteraction < Api::V1::ApplicationInteraction
-        ROLE = 'role'.freeze
-        ATTRIBUTES = 'attributes'.freeze
-
         hash :data do
           hash :attributes do
             string :role, default: nil
@@ -31,9 +28,9 @@ module Api
         end
 
         def permitted_attributes
-          attributes = data[ATTRIBUTES]
+          attributes = data[:attributes]
 
-          attributes.delete(ROLE) unless current_user.permitted_roles_to_set.include?(attributes[ROLE])
+          attributes.delete(:role) unless current_user.permitted_roles_to_set.include?(attributes[:role])
 
           attributes.compact
         end
