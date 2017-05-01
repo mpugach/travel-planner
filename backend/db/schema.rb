@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170427200451) do
+ActiveRecord::Schema.define(version: 20170501082253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,10 @@ ActiveRecord::Schema.define(version: 20170427200451) do
     t.text     "comment"
     t.date     "start_date"
     t.date     "end_date"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.tsvector "search_vector"
+    t.index ["search_vector"], name: "index_trips_on_search_vector", using: :gin
     t.index ["user_id"], name: "index_trips_on_user_id", using: :btree
   end
 

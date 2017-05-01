@@ -4,6 +4,33 @@
 
 <div class="layout-row layout-align-center">
   <div class="flex-xs-95 flex-sm-85 flex-md-80 flex-70">
+    <div class="layout-row">
+      <div class="flex-20">
+        {{paper-pikaday
+          label="Min date"
+          value=minStartDate
+          onChange=(action (mut minStartDate))
+        }}
+      </div>
+
+      <div class="flex-60">
+        {{paper-input
+          block=true
+          label="Filter trips"
+          value=tripsTerm
+          onChange=(action (mut tripsTerm))
+        }}
+      </div>
+
+      <div class="flex-20">
+        {{paper-pikaday
+          label="Max date"
+          value=maxEndDate
+          onChange=(action (mut maxEndDate))
+        }}
+      </div>
+    </div>
+
     {{#paper-list}}
       {{#paper-item}}
         <span class="flex"></span>
@@ -46,6 +73,12 @@
     {{/paper-list}}
   </div>
 </div>
+
+{{#if noTrips}}
+  <div class="layout-row layout-align-center">
+    <div>No trips found...</div>
+  </div>
+{{/if}}
 
 {{#destroy-confirmation
   visible=showDeleteConfirmation
