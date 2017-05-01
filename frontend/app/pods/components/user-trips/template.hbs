@@ -31,7 +31,9 @@
       {{#paper-item}}
         <span class="flex"></span>
 
-        {{link-to "Create trip" "trips.new" (query-params userId=userId)}}
+        {{#link-to "trips.new" (query-params userId=userId) class="md-button md-raised md-icon-button"}}
+          {{paper-icon "add_location"}}
+        {{/link-to}}
       {{/paper-item}}
 
       {{#each trips as |trip|}}
@@ -55,7 +57,7 @@
 
           <span class="flex"></span>
 
-          {{#link-to "trips.edit" trip (query-params userId=userId) class="md-default-theme md-button md-icon-button"}}
+          {{#link-to "trips.edit" trip (query-params userId=userId) class="md-button md-icon-button"}}
             {{paper-icon "mode_edit"}}
           {{/link-to}}
 

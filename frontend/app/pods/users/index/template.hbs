@@ -8,7 +8,9 @@
       {{#paper-item}}
         <span class="flex"></span>
 
-        {{link-to "Create user" "users.new"}}
+        {{#link-to "users.new" class="md-button md-raised md-icon-button"}}
+          {{paper-icon "person_add"}}
+        {{/link-to}}
       {{/paper-item}}
 
       {{#each model as |user|}}
