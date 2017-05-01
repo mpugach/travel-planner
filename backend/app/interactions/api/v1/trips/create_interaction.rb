@@ -39,7 +39,7 @@ module Api
         end
 
         def authorized?
-          current_user.present?
+          user_id == current_user.id || current_user.admin?
         end
       end
     end
