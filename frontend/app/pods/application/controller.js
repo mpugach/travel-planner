@@ -13,7 +13,7 @@ export default Controller.extend({
   currentUser: service(),
 
   actions: {
-    invalidateSession: function() {
+    invalidateSession() {
       get(this, 'session').invalidate();
     },
 
