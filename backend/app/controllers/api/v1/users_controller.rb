@@ -4,7 +4,7 @@ module Api
       ME = 'me'.freeze
 
       def show
-        render_interaction me? ? Api::V1::Users::MeInteraction : Api::V1::Users::ShowInteraction
+        render_interaction me? ? Api::V1::Me::ShowInteraction : Api::V1::Users::ShowInteraction
       end
 
       def index
@@ -16,7 +16,7 @@ module Api
       end
 
       def update
-        render_interaction me? ? Api::V1::Users::UpdateMeInteraction : Api::V1::Users::UpdateInteraction
+        render_interaction me? ? Api::V1::Me::UpdateInteraction : Api::V1::Users::UpdateInteraction
       end
 
       def destroy

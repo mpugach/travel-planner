@@ -1,7 +1,7 @@
 module Api
   module V1
-    module Users
-      class UpdateMeInteraction < Api::V1::ApplicationInteraction
+    module Me
+      class UpdateInteraction < Api::V1::ApplicationInteraction
         hash :data do
           hash :attributes do
             string :email, default: nil

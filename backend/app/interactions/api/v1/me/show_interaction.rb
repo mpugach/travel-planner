@@ -1,9 +1,7 @@
 module Api
   module V1
-    module Users
-      class MeInteraction < Api::V1::ApplicationInteraction
-        string :id
-
+    module Me
+      class ShowInteraction < Api::V1::ApplicationInteraction
         def execute
           serialize(current_user, serializer: Api::V1::MeSerializer)
         end
@@ -11,7 +9,7 @@ module Api
         private
 
         def authorized?
-          true
+          current_user.present?
         end
       end
     end
