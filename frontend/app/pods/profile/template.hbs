@@ -13,6 +13,10 @@
         </div>
 
         <div class="layout-column vert-offset-top-1">
+          {{link-to "Change password" "password" class="md-button md-primary md-raised"}}
+        </div>
+
+        <div class="layout-column vert-offset-top-1">
           {{#paper-button raised=true warn=true onClick=(action "destroyObject" model)}}
             Delete account
           {{/paper-button}}

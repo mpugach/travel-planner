@@ -34,6 +34,7 @@ const {
 export default Model.extend(Validations, {
   role: attr('string'),
   email: attr('string'),
+  password: attr('string'),
   canManageUsers: attr('boolean'),
   permittedRolesToSet: attr(),
 
