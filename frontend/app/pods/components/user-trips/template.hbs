@@ -1,0 +1,86 @@
+<div class="layout-row layout-align-center">
+  <div class="flex-xs-95 flex-sm-85 flex-md-80 flex-70">
+    <div class="layout-row">
+      <div class="flex-20">
+        {{paper-pikaday
+          label="Min date"
+          value=minStartDate
+          onChange=(action (mut minStartDate))
+        }}
+      </div>
+
+      <div class="flex-60">
+        {{paper-input
+          block=true
+          label="Filter trips"
+          value=tripsTerm
+          onChange=(action (mut tripsTerm))
+        }}
+      </div>
+
+      <div class="flex-20">
+        {{paper-pikaday
+          label="Max date"
+          value=maxEndDate
+          onChange=(action (mut maxEndDate))
+        }}
+      </div>
+    </div>
+
+    {{#paper-list}}
+      {{#paper-item}}
+        <span class="flex"></span>
+
+        {{link-to "Create trip" "trips.new" (query-params userId=userId)}}
+      {{/paper-item}}
+
+      {{#each trips as |trip|}}
+        {{#paper-item as |controls|}}
+          <div>
+            <h2>
+              {{trip.destination}} {{starts-in trip.startDate}}
+            </h2>
+
+            <h5>
+              From
+              {{format-date trip.startDate format="YYYY-MM-DD"}}
+              to
+              {{format-date trip.endDate format="YYYY-MM-DD"}}
+            </h5>
+
+            <section>
+              {{{trip.comment}}}
+            </section>
+          </div>
+
+          <span class="flex"></span>
+
+          {{#link-to "trips.edit" trip (query-params userId=userId) class="md-default-theme md-button md-icon-button"}}
+            {{paper-icon "mode_edit"}}
+          {{/link-to}}
+
+          {{#controls.button iconButton=true onClick=(action "destroyObject" trip)}}
+            {{paper-icon "delete_forever"}}
+          {{/controls.button}}
+
+          {{paper-divider}}
+        {{/paper-item}}
+      {{/each}}
+    {{/paper-list}}
+  </div>
+</div>
+
+{{#if noTrips}}
+  <div class="layout-row layout-align-center">
+    <div>No trips found...</div>
+  </div>
+{{/if}}
+
+{{#destroy-confirmation
+  visible=showDeleteConfirmation
+  onCancel=(action "closeDeleteConfirmation" "cancel")
+  onConfirm=(action "closeDeleteConfirmation" "yes")
+}}
+  <p>The action is irreversible.</p>
+  <p>Are you sure you want to delete the trip to <b>{{objectToDelete.destination}}</b> ?</p>
+{{/destroy-confirmation}}

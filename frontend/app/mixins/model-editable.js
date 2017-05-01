@@ -19,7 +19,7 @@ export default Mixin.create({
         model
           .save()
           .then(() => this.toast.success(successMessage))
-          .then(() => this.transitionToRoute(routeAfterSave))
+          .then(() => this.transitionToRoute(...routeAfterSave))
           .catch(() => {
             if (get(model, 'errors.length')) {
               get(model, 'errors.messages').forEach(error => this.toast.error(error));

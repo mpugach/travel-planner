@@ -1,22 +1,29 @@
 import Ember from 'ember';
-import DestroyConfirmable from '../../mixins/destroy-confirmable';
+import DestroyConfirmable from '../../../mixins/destroy-confirmable';
 
 const {
   get,
   set,
   observer,
-  Controller,
+  Component,
   getProperties,
   run: {
     debounce,
   },
+  inject: {
+    service,
+  },
   computed: {
     not,
+    alias,
   },
 } = Ember;
 
-export default Controller.extend(DestroyConfirmable, {
-  noTrips: not('model.length'),
+export default Component.extend(DestroyConfirmable, {
+  store: service(),
+
+  userId: alias('user.id'),
+  noTrips: not('trips.length'),
 
   termChanged: observer('tripsTerm', function() {
     debounce(this, this.queryTrips, 300);
@@ -27,12 +34,12 @@ export default Controller.extend(DestroyConfirmable, {
   }),
 
   queryTrips() {
-    const keys = ['tripsTerm', 'maxEndDate', 'minStartDate'];
+    const keys = ['userId', 'tripsTerm', 'maxEndDate', 'minStartDate'];
     const filter = getProperties(this, ...keys);
 
     get(this, 'store')
       .query('trip', this.decamelizeKeys(filter, keys))
-      .then(trips => set(this, 'model', trips));
+      .then(trips => set(this, 'trips', trips));
   },
 
   decamelizeKeys(obj, keys) {

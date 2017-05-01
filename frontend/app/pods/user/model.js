@@ -26,6 +26,9 @@ const Validations = buildValidations({
 const {
   get,
   computed,
+  computed: {
+    equal,
+  },
 } = Ember;
 
 export default Model.extend(Validations, {
@@ -33,6 +36,8 @@ export default Model.extend(Validations, {
   email: attr('string'),
   canManageUsers: attr('boolean'),
   permittedRolesToSet: attr(),
+
+  isAdmin: equal('role', 'admin'),
 
   emailErrors: computed('errors.email', function() {
     const errors = get(this, 'errors.email');

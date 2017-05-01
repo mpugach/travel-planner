@@ -7,5 +7,5 @@ const {
 
 export default Controller.extend(ModelEditable, {
   successMessage: 'The user is saved!',
-  routeAfterSave: 'users.index',
+  routeAfterSave: ['users.index'],
 });

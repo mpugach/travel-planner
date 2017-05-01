@@ -21,6 +21,12 @@
 
           <span class="flex"></span>
 
+          {{#if currentUser.data.isAdmin}}
+            {{#link-to "users.trips" user.id class="md-default-theme md-button md-icon-button"}}
+              {{paper-icon "list"}}
+            {{/link-to}}
+          {{/if}}
+
           {{#link-to "users.edit" user class="md-default-theme md-button md-icon-button"}}
             {{paper-icon "mode_edit"}}
           {{/link-to}}

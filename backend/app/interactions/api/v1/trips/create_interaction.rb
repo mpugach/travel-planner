@@ -12,6 +12,8 @@ module Api
 
             string :comment, default: ''
             string :destination
+
+            integer :user_id, default: nil
           end
         end
 
@@ -34,7 +36,7 @@ module Api
         def permitted_attributes
           attributes = data[ATTRIBUTES]
 
-          attributes[USER_ID] = current_user.id
+          attributes[USER_ID] = current_user.admin? && data[ATTRIBUTES][USER_ID] || current_user.id
 
           attributes.compact
         end

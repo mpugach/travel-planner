@@ -10,9 +10,12 @@ const {
 } = Ember;
 
 export default Route.extend(AuthenticatedRouteMixin, {
-  model() {
+  model(params) {
+    const store = get(this, 'store');
+
     return hash({
-      trips: get(this, 'store').query('trip', {}),
+      user: store.findRecord('user', params.userId),
+      trips: store.query('trip', { user_id: params.userId }),
     });
   },
 });
