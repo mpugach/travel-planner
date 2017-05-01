@@ -21,11 +21,11 @@ module Api
           collection = collection.where('"end_date" <= ?', max_end_date) if max_end_date.present?
           collection = collection.where('"start_date" >= ?', min_start_date) if min_start_date.present?
 
-          collection.where(user_id: current_user.admin? && user_id || current_user.id)
+          collection.where(user_id: user_id || current_user.id)
         end
 
         def authorized?
-          user_id == current_user.id || current_user.admin?
+          user_id && current_user.admin? || current_user.present?
         end
       end
     end

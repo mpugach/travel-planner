@@ -33,13 +33,13 @@ module Api
         def permitted_attributes
           attributes = data[:attributes]
 
-          attributes[:user_id] = current_user.admin? && data[:attributes][:user_id] || current_user.id
+          attributes[:user_id] ||= current_user.id
 
           attributes.compact
         end
 
         def authorized?
-          user_id == current_user.id || current_user.admin?
+          data[:attributes][:user_id] && current_user.admin? || current_user.present?
         end
       end
     end
