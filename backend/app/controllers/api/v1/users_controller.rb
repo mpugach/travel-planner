@@ -4,7 +4,7 @@ module Api
       ME = 'me'.freeze
 
       def show
-        render_interaction params[:id] == ME ? Api::V1::Users::MeInteraction : Api::V1::Users::ShowInteraction
+        render_interaction me? ? Api::V1::Users::MeInteraction : Api::V1::Users::ShowInteraction
       end
 
       def index
@@ -16,11 +16,17 @@ module Api
       end
 
       def update
-        render_interaction Api::V1::Users::UpdateInteraction
+        render_interaction me? ? Api::V1::Users::UpdateMeInteraction : Api::V1::Users::UpdateInteraction
       end
 
       def destroy
         render_interaction Api::V1::Users::DestroyInteraction
+      end
+
+      private
+
+      def me?
+        params[:id] == ME
       end
     end
   end

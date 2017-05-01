@@ -16,5 +16,9 @@ export default Controller.extend({
     invalidateSession: function() {
       get(this, 'session').invalidate();
     },
+
+    goToProfile() {
+      this.transitionToRoute('profile');
+    },
   },
 });

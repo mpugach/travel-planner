@@ -11,15 +11,20 @@ export default Mixin.create({
     saveModel() {
       const {
         model,
+        afterSave,
         routeAfterSave,
         successMessage,
-      } = getProperties(this, 'model', 'successMessage', 'routeAfterSave');
+      } = getProperties(this, 'model', 'afterSave', 'successMessage', 'routeAfterSave');
 
       if (get(model, 'hasDirtyAttributes')) {
         model
           .save()
           .then(() => this.toast.success(successMessage))
-          .then(() => this.transitionToRoute(...routeAfterSave))
+          .then(argument => {
+            if (!routeAfterSave) return argument;
+
+            return this.transitionToRoute(...routeAfterSave);
+          })
           .catch(() => {
             if (get(model, 'errors.length')) {
               get(model, 'errors.messages').forEach(error => this.toast.error(error));

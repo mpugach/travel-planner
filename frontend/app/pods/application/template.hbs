@@ -1,6 +1,6 @@
-{{#paper-toolbar}}
+{{#paper-toolbar as |toolbar|}}
   {{#if session.isAuthenticated}}
-    {{#paper-toolbar-tools class="layout-row layout-align-space-between-center"}}
+    {{#toolbar.tools class="layout-row layout-align-space-between-center"}}
       {{#link-to "index"}}
         {{paper-icon "home" size=36}}
       {{/link-to}}
@@ -11,10 +11,26 @@
         {{/link-to}}
       {{/if}}
 
-      {{#paper-button iconButton=true onClick=(action "invalidateSession")}}
-        {{paper-icon "exit_to_app" size=28}}
-      {{/paper-button}}
-    {{/paper-toolbar-tools}}
+      {{#paper-menu as |menu|}}
+        {{#menu.trigger}}
+          {{#paper-button iconButton=true}}
+            {{paper-icon "settings" size=28}}
+          {{/paper-button}}
+        {{/menu.trigger}}
+
+        {{#menu.content width=4 as |content|}}
+          {{#content.menu-item onClick=(action "goToProfile")}}
+            Profile
+          {{/content.menu-item}}
+
+          {{paper-divider}}
+
+          {{#content.menu-item onClick=(action "invalidateSession")}}
+            Logout
+          {{/content.menu-item}}
+        {{/menu.content}}
+      {{/paper-menu}}
+    {{/toolbar.tools}}
   {{/if}}
 {{/paper-toolbar}}
 
