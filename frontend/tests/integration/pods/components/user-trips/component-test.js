@@ -10,9 +10,11 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
+  const content = 'MindateFiltertripsMaxdateCreatetripNotripsfound...';
+
   this.render(hbs`{{user-trips}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$().text().trim().replace(/\s/g,''), content);
 
   // Template block usage:
   this.render(hbs`
@@ -21,5 +23,5 @@ test('it renders', function(assert) {
     {{/user-trips}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim().replace(/\s/g,''), content);
 });

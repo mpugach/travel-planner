@@ -15,7 +15,7 @@ export function startsIn([value]) {
 
   if (targetDate.diff(today, 'days') < 1) return null;
 
-  return `(starts in ${targetDate.fromNow(today)})`;
+  return `(starts ${targetDate.from(today)})`;
 }
 
 export default helper(startsIn);
