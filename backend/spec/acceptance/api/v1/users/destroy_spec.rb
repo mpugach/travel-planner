@@ -26,7 +26,7 @@ resource 'User destroy' do
         expect_unauthorized
       end
 
-      example 'Get existing user when is not authenticated' do
+      example 'Delete existing user when is not authenticated' do
         do_request id: user.id
 
         expect_unauthorized
