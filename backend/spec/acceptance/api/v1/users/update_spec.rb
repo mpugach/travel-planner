@@ -110,8 +110,8 @@ resource 'User update' do
         end
       end
 
-      User.roles.each do |to_role, to_key|
-        User.roles.each do |from_role, from_key|
+      User.roles.each do |to_role, _|
+        User.roles.each do |from_role, _|
           context "from #{from_role} to #{to_role}" do
             let(:role) { to_role }
             let(:user_role) { from_role }

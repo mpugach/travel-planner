@@ -64,7 +64,7 @@ resource 'User create' do
         end
       end
 
-      User.roles.each do |role, key|
+      User.roles.each do |role, _|
         context "#{role} role" do
           let(:role) { role }
 
