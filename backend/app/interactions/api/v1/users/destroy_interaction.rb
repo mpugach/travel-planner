@@ -9,6 +9,12 @@ module Api
 
           serialize(user)
         end
+
+        private
+
+        def authorized?
+          id != current_user.id && current_user.can_manage_users? && sufficient_level?
+        end
       end
     end
   end

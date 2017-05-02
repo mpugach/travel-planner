@@ -28,15 +28,11 @@ module Api
         end
 
         def permitted_attributes
-          attributes = data[:attributes]
-
-          attributes.delete(:role) unless current_user.permitted_roles_to_set.include?(attributes[:role])
-
-          attributes.compact
+          data[:attributes].compact
         end
 
         def authorized?
-          current_user.can_manage_users?
+          current_user.can_manage_users? && current_user.permitted_roles_to_set.include?(permitted_attributes[:role])
         end
       end
     end

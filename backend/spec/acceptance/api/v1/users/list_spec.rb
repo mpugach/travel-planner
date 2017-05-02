@@ -11,11 +11,10 @@ resource 'Users list' do
 
   def expect_authorized
     expect(status).to eq(200)
-    expect(parsed_response[:data].count).to be(3)
     expect(parsed_response[:data].map { |u| u[:type] }.uniq).to eq(['users'])
   end
 
-  before { create_list :user, 2 }
+  let!(:users) { create_list :user, 2 }
 
   get '/api/v1/users' do
     context 'not authenticated' do
@@ -34,17 +33,23 @@ resource 'Users list' do
 
     context 'authenticated admin' do
       before { current_user.admin! }
+      before { users.last.manager! }
 
       example_request 'Admin user' do
         expect_authorized
+
+        expect(parsed_response[:data].map { |u| u[:attributes][:role] }.sort).to eq(%w[admin manager regular])
       end
     end
 
     context 'authenticated manager' do
       before { current_user.manager! }
+      before { users.last.admin! }
 
       example_request 'Manager user' do
         expect_authorized
+
+        expect(parsed_response[:data].map { |u| u[:attributes][:role] }.sort).to eq(%w[manager regular])
       end
     end
   end
