@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :trip do
-    user nil
-    destination 'MyString'
-    comment 'MyText'
-    start_date '2017-04-27'
-    end_date '2017-04-27'
+    user
+    end_date    { Date.tomorrow }
+    comment     { FFaker::HealthcareIpsum.sentence }
+    start_date  { Date.yesterday }
+    destination { FFaker::Address.city }
   end
 end

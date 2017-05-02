@@ -12,11 +12,11 @@ module Api
           private
 
           def trip
-            @_trip ||= Trip.find(id)
+            @_trip ||= Trip.where(id: id).first
           end
 
           def authorized?
-            id == current_user.id || current_user.admin?
+            trip.present? && (trip.user_id == current_user.id || current_user.admin?)
           end
         end
       end

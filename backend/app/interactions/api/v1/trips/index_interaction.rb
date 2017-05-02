@@ -25,7 +25,7 @@ module Api
         end
 
         def authorized?
-          user_id && current_user.admin? || current_user.present?
+          user_id && current_user.admin? || !user_id && current_user.present?
         end
       end
     end

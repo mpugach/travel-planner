@@ -25,10 +25,8 @@ resource 'Users list' do
       end
     end
 
-    context 'authenticated regular' do
-      example_request 'Regular user' do
-        expect_unauthorized
-      end
+    example_request 'Regular user' do
+      expect_unauthorized
     end
 
     context 'authenticated admin' do
