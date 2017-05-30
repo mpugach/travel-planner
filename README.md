@@ -1,3 +1,5 @@
+## An example of Ember SPA with Rails API
+
 ### Setup and start development server
 
 1. Start PostgreSQL server
